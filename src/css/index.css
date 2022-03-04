@@ -1,0 +1,547 @@
+.conleft {
+    float: left;
+    left: 0;
+    background-color: #fff;
+    width: 15%;
+    height: 80%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+
+.container {
+    background-color: rgb(255, 255, 255);
+    height: 80%;
+    overflow: scroll;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.item {
+    position: relative;
+}
+
+.sidebar {
+    height: 28px;
+    width: 200px;
+    background-color: rgb(255, 255, 255);
+    text-align: left;
+    padding: 10px;
+    font-size: 15px;
+    color: #000;
+    border-right: 1px, solid rgb(204, 204, 204);
+}
+
+
+.sidebar0 {
+    height: 28px;
+    width: 200px;
+    background-color: rgb(246, 246, 247);
+    text-align: left;
+    padding: 15px;
+    font-size: 17px;
+    color: #000;
+    font-weight: bold;
+    border-right: 1px, solid rgb(204, 204, 204);
+}
+
+.sidebar1,
+.sidebar2 {
+    height: 22px;
+    width: 200px;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    text-align: left;
+    font-size: 12px;
+    color: rgb(204, 204, 204);
+    border-right: 1px, solid rgb(204, 204, 204);
+}
+
+.sidebar2 {
+    overflow: hidden;
+}
+
+.sidebar2 div {
+    margin: 15%;
+}
+
+.recommend,
+.unique {
+
+    height: 5%;
+    width: 15%;
+    background-color: rgb(255, 255, 255);
+    color: rgb(61, 60, 60);
+    text-align: center;
+    font-size: 25px;
+    margin-top: 50px;
+    margin-left: 30px;
+    font-weight: bold;
+}
+
+.unique {
+    position: absolute;
+    top: 68%;
+    left: 11%;
+    z-index: 555;
+}
+
+
+
+.recommend:hover {
+
+    color: #000;
+}
+
+.picf {
+    margin: 2%;
+}
+
+.conmiddle {
+    height: 2000px;
+    overflow: hidden;
+}
+
+.pic {
+    float: left;
+    position: relative;
+    width: 15%;
+    height: 15%;
+    left: 5%;
+    border-radius: 15%;
+    margin: 5px;
+    margin-bottom: 50px;
+    top: 0px;
+    display: block;
+}
+
+.unique1 li {
+    float: left;
+    position: relative;
+    width: 17%;
+    height: 17%;
+    left: 230px;
+    border-radius: 15%;
+    margin: 5px;
+    margin-bottom: 50px;
+    background-color: rgb(110, 104, 104);
+    display: block;
+
+}
+
+.unique1 {
+    margin-left: 45px;
+
+}
+
+
+
+.unique1 li {
+    float: left;
+    margin-top: 90px;
+}
+
+.pic div,
+.unique1 li button {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #000;
+    bottom: 10px;
+    right: 10px;
+    z-index: 6;
+    display: none;
+}
+
+.pic:hover div,
+.unique1 li:hover div {
+    display: block;
+    background-color: aliceblue;
+    transition: 1s linear;
+    opacity: 0.8;
+    position: absolute;
+    bottom: 20%;
+    right: 10%;
+}
+
+.pic div {
+    font-size: 20px;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+/* img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .2);
+} */
+.tab-con {
+    position: absolute;
+    top: 30px;
+}
+
+.box {
+    position: relative;
+    width: 80%;
+    height: 300px;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    margin-bottom: 50px;
+    z-index: 0;
+}
+
+.imgs {
+    position: absolute;
+    width: 70%;
+    height: 284px;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+}
+
+.line {
+    float: left;
+    width: 1px;
+    height: 660px;
+    background-color: rgb(204, 204, 204);
+}
+
+.guide {
+    float: left;
+    width: 120px;
+    height: 40px;
+    font-size: 15px;
+    margin: 10px;
+    text-align: center;
+}
+
+/*.guide:focus {
+    float: left;
+    width: 120px;
+    height: 40px;
+    font-size: 20px;
+    margin: 5px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 4px solid rgb(236, 65, 65);
+}
+*/
+.guide1 {
+    float: left;
+    width: 120px;
+    height: 40px;
+    font-size: 20px;
+    margin: 5px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 4px solid rgb(236, 65, 65);
+}
+
+.imgs li {
+    float: left;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.tab {
+    position: absolute;
+    top: 0%;
+    left: 15%;
+}
+
+.imgs img {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+}
+
+.img .innerImg {
+    width: 15%;
+    height: 100px;
+    margin-left: 250;
+    margin-top: 50px;
+    box-shadow: 2px 2px 5px 5px rgb(204, 223, 31);
+}
+
+.box .left {
+    position: absolute;
+    font-size: 24px;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    background-color: #000;
+    border-radius: 50%;
+    top: 50%;
+    left: 10px;
+    opacity: .5;
+    z-index: 1000;
+}
+
+.box .right {
+    position: absolute;
+    font-size: 24px;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    background-color: #000;
+    border-radius: 50%;
+    top: 50%;
+    right: 10px;
+    opacity: .5;
+    z-index: 1000;
+}
+
+.letf:hover {
+    opacity: .7;
+}
+
+.right:hover {
+    opacity: .7;
+}
+
+.imgs .one {
+    transform: translateX(-40%)scale(.7);
+    z-index: 1;
+}
+
+.imgs .two {
+    transform: scale(.9);
+    z-index: 2;
+}
+
+
+.imgs .three {
+    transform: translateX(40%) scale(.7);
+    z-index: 1;
+}
+
+.imgs .four {
+    transform: scale(.7);
+}
+
+.imgs .five {
+    transform: scale(.7);
+}
+
+.imgs .six {
+    transform: scale(.7);
+}
+
+.list {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -81px;
+    z-index: 999;
+}
+
+.list li {
+    float: left;
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 6px;
+    cursor: pointer;
+}
+
+.list .change {
+    background-color: red;
+}
+
+.rights {
+    position: absolute;
+    right: 0;
+    bottom: 30px;
+    height: 255px;
+    width: 100px;
+}
+
+.lefts {
+    position: absolute;
+    left: 0;
+    bottom: 30px;
+    height: 255px;
+    width: 100px;
+}
+
+.login {
+    position: fixed;
+    width: 250px;
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+    z-index: 999;
+    right: 100px;
+    display: none;
+
+}
+
+.img img {
+    margin: 20px 0px;
+}
+
+.input {
+    margin: 0px 35px;
+    position: relative;
+}
+
+.checkbox {
+    position: absolute;
+    top: 40px;
+    left: -18px;
+    margin: 20px 3px;
+    width: 15px;
+    height: 15px;
+}
+
+.warning {
+    height: 15px;
+    width: 140px;
+    position: absolute;
+    top: 60px;
+    right: -5px;
+    color: rgb(236, 65, 65);
+    font-size: 8px;
+}
+
+form .auto {
+    position: absolute;
+    top: 55px;
+    left: 10px;
+}
+
+.btnlogin {
+    width: 200px;
+    height: 30px;
+    background-color: rgb(236, 65, 65);
+    border-radius: 10px;
+    position: absolute;
+    right: 0px;
+    top: 90px;
+    color: #fff;
+    border: none;
+}
+
+.loginicon1,
+.loginicon2,
+.loginicon3 {
+    position: absolute;
+    top: 310px;
+}
+
+.loginicon1 {
+    left: 40px;
+}
+
+.loginicon2 {
+    left: 90px;
+}
+
+.loginicon3 {
+    left: 140px;
+}
+
+.agree1 {
+    height: 10px;
+    width: 10px;
+}
+
+.agree {
+    position: absolute;
+    top: 350px;
+    left: 10px;
+    font-size: 4px;
+}
+
+.playlista {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.hot {
+    position: fixed;
+    width: 320px;
+    height: 640px;
+    background-color: rgb(255, 255, 255);
+    z-index: 999;
+    left: 400px;
+    display: none;
+    overflow: scroll;
+    overflow-x: hidden;
+    border-radius: 10px;
+}
+
+.ulog {
+    height: 25px;
+    width: 65px;
+    font-size: 10px;
+    position: absolute;
+    right: 180px;
+    top: 23px;
+    border-radius: 50%;
+    color: rgb(233, 230, 230);
+    text-align: center;
+}
+
+.ulog:hover {
+    color: #fff;
+}
+
+.volume-control {
+    display: none;
+}
+
+.conleft ul a {
+    float: left;
+}
+
+.conleft ul a img {
+    height: 25px;
+    width: 23px;
+    margin-top: 10px;
+}
+
+.likelist img {
+    height: 15px;
+    width: 20px;
+}
+
+.hot div {
+    width: 250px;
+}
+
+.hot span {
+    margin-left: 20px;
+}
+
+.hot .head1 {
+    margin-left: 10px;
+    font-size: 15px;
+    color: rgb(71, 70, 70);
+    margin-top: 10px;
+}
+
+.hotli {
+    margin-bottom: 20px;
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 10px;
+}

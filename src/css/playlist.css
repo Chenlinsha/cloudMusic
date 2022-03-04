@@ -1,0 +1,296 @@
+.conleft {
+    position: sticky;
+    left: 0;
+    background-color: #fff;
+    width: 15%;
+    height: 80%;
+    overflow: scroll;
+    overflow-x: hidden;
+
+}
+
+.container {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    height: 80%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.conright {
+    display: none;
+}
+
+.item {
+    position: relative;
+}
+
+.sidebar {
+    height: 28px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    text-align: left;
+    padding: 10px;
+    font-size: 15px;
+    color: #000;
+    border-right: 1px, solid rgb(204, 204, 204);
+}
+
+
+.sidebar0 {
+    height: 28px;
+    width: 100%;
+    background-color: rgb(246, 246, 247);
+    text-align: left;
+    padding: 15px;
+    font-size: 17px;
+    color: #000;
+    font-weight: bold;
+    border-right: 1px, solid rgb(204, 204, 204);
+}
+
+.sidebar1,
+.sidebar2 {
+    height: 22px;
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    text-align: left;
+    font-size: 12px;
+    color: rgb(204, 204, 204);
+    border-right: 1px, solid rgb(204, 204, 204);
+}
+
+.sidebar2 {
+    overflow: hidden;
+}
+
+.sidebar2 div {
+    margin: 20px;
+    height: 500px;
+}
+
+.pic {
+    position: absolute;
+    width: 14%;
+    height: 24%;
+    top: 10%;
+    left: 17%;
+}
+
+
+
+.playlist {
+    position: absolute;
+    top: 90px;
+    left: 32%;
+    width: 3%;
+    height: 30px;
+}
+
+.listname {
+    position: absolute;
+    top: 90px;
+    left: 37%;
+    height: 30px;
+    width: 30%;
+    text-align: left;
+    font-size: larger;
+}
+
+.author {
+    position: absolute;
+    top: 135px;
+    left: 32.5%;
+    height: 20px;
+    width: 25%;
+}
+
+.atouxiang {
+    width: 20px;
+    height: 20px;
+}
+
+.aaudio {
+    position: absolute;
+    top: 170px;
+    left: 32.5%;
+    height: 30px;
+    width: 8%;
+    background-color: rgb(236, 65, 65);
+    border-radius: 20px;
+    text-align: center;
+    margin: auto;
+    color: #fff;
+    font-size: 20px;
+}
+
+.collect,
+.share,
+.download {
+    position: absolute;
+    top: 170px;
+    height: 30px;
+    width: 8%;
+    border: 1px #ccc solid;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.collect {
+    left: 42%;
+}
+
+.share {
+    left: 52%;
+}
+
+.download {
+    left: 62%;
+}
+
+.tag,
+.asong,
+.saudio,
+.exp,
+.contag,
+.consong,
+.consaudio,
+.conexp {
+    display: inline-block;
+    width: 20%;
+    height: 20px;
+    background-color: #fff;
+    position: absolute;
+    font-size: small;
+
+}
+
+.tag {
+    top: 215px;
+    left: 32.5%;
+}
+
+.contag {
+    width: 20%;
+    top: 215px;
+    left: 36%;
+}
+
+.asong {
+    top: 245px;
+    left: 43%;
+}
+
+.consong {
+    top: 245px;
+    left: 37%;
+}
+
+.saudio {
+    top: 245px;
+    left: 32.5%;
+}
+
+.consaudio {
+    top: 245px;
+    width: 100px;
+    left: 36%;
+}
+
+.exp {
+    top: 275px;
+    left: 32.5%;
+
+}
+
+.conexp {
+    top: 275px;
+    left: 36%;
+    width: 40%;
+    overflow: hidden;
+}
+
+.alist {
+    position: absolute;
+    top: 330px;
+    left: 18%;
+    width: 80px;
+    height: 30px;
+    border-bottom: rgb(236, 65, 65)solid 2px;
+    font-size: large;
+}
+
+.recommend,
+.collector {
+    position: absolute;
+    top: 330px;
+    width: 30%;
+    height: 30px;
+    font-size: medium;
+    text-align: center;
+}
+
+.recommend {
+    left: 11.5%;
+}
+
+.collector {
+    left: 16%;
+}
+
+.name1 {
+    font-size: small;
+    margin: 0px;
+
+}
+
+.songs {
+    position: absolute;
+    top: 370px;
+    left: 16%;
+
+}
+
+
+
+.num {
+    margin-right: 10px;
+}
+
+.onesong {
+    height: 30px;
+    width: 1000px;
+}
+
+.songer2 {
+    position: absolute;
+    left: 800px;
+    height: 30px;
+    width: 400px;
+}
+
+.songs {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 349px;
+    width: 1190px;
+}
+
+.songs :nth-child(2n+1) {
+    background-color: rgb(249, 249, 249);
+}
+
+.songs :nth-child(2n) {
+    background-color: rgb(245, 245, 245);
+}
+
+.conmiddle .songs li span {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.onesong img {
+    height: 15px;
+    width: 18px;
+}

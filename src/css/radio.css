@@ -1,0 +1,246 @@
+body {
+    background-image: linear-gradient(rgb(214, 204, 217), #fff);
+}
+
+.container {
+    position: relative;
+    height: 660px;
+    display: flex;
+}
+
+@keyframes run {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.left {
+    width: 400px;
+    position: relative;
+}
+
+.middle {
+    width: 1200px;
+    position: relative;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.circle-big {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background-color: #d5d6d6;
+    animation: run 8s linear infinite;
+    top: 100px;
+    left: 80px;
+    animation-play-state: paused;
+}
+
+
+
+.circle-small {
+    position: absolute;
+    width: 290px;
+    height: 290px;
+    border-radius: 50%;
+    top: 15px;
+    left: 15px;
+    background-color: #000;
+
+}
+
+.circle-small img {
+    width: 230px;
+    display: block;
+    border-radius: 50%;
+    top: 35px;
+    left: 30px;
+
+    position: absolute;
+}
+
+h1 {
+    display: block;
+    position: absolute;
+    top: 40px;
+    left: 27%;
+}
+
+.album {
+
+    height: 30px;
+    font-size: 18px;
+    color: rgb(160, 159, 159);
+    position: absolute;
+    top: 100px;
+    left: 30%;
+
+
+}
+
+.middle .songer {
+    height: 30px;
+    font-size: 18px;
+    color: rgb(160, 159, 159);
+    position: absolute;
+    top: 120px;
+    left: 30%;
+
+}
+
+.middle {
+    height: 600px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+textarea {
+    display: none;
+}
+
+.divdia {
+    position: relative;
+    top: 150px;
+    height: 350px;
+    overflow: hidden;
+}
+
+.dia li.play1 {
+    color: #000;
+    font-size: 25px;
+
+}
+
+.dia li {
+    text-align: center;
+    color: #ccc;
+    font-size: 20px;
+}
+
+
+
+.dia {
+    top: 200px;
+    height: 2000px;
+    width: 79%;
+    overflow-x: hidden;
+    position: relative;
+    behavior: smooth;
+}
+
+.lyrics {
+    position: absolute;
+    width: 800px;
+    overflow-x: hidden;
+    font-size: 15px;
+    color: rgb(63, 63, 63);
+    top: 0px;
+    left: 130px;
+    behavior: smooth;
+}
+
+.lyrics::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    /**/
+}
+
+.lyrics::-webkit-scrollbar-track {
+    background: rgb(239, 239, 239);
+    border-radius: 2px;
+}
+
+.lyrics::-webkit-scrollbar-thumb {
+    background: #bfbfbf;
+    border-radius: 10px;
+}
+
+.lyrics::-webkit-scrollbar-thumb:hover {
+    background: #333;
+}
+
+.lyrics::-webkit-scrollbar-corner {
+    background: #797a79;
+}
+
+.commend {
+    position: absolute;
+    width: 800px;
+    height: 600px;
+    top: 560px;
+    left: 50px;
+    z-index: 1;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+
+
+.title {
+    margin: 10px;
+    width: 100px;
+    height: 30px;
+    font-size: larger;
+    top: 10px;
+    left: 10px;
+    z-index: 999;
+    position: static;
+}
+
+.con {
+    position: relative;
+    width: 780px;
+    height: 60px;
+    overflow: hidden;
+    margin-left: 10px;
+    margin-top: 12px;
+}
+
+.userpic {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    left: 10px;
+}
+
+.comcon {
+    position: absolute;
+    width: 700px;
+    overflow: hidden;
+    left: 70px;
+    height: 40px;
+}
+
+.time {
+    position: absolute;
+    height: 20px;
+    top: 40px;
+    left: 70px;
+    width: 300px;
+}
+
+.like {
+    position: absolute;
+    height: 20px;
+    top: 40px;
+    right: 30px;
+    width: 60px;
+}
+
+.lyout {
+    font-size: 20px;
+    color: rgb(96, 98, 99);
+}
+
+.lyin {
+    font-size: 30px;
+    font-weight: 800;
+    color: black;
+}

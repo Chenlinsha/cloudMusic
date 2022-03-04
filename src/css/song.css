@@ -1,0 +1,16 @@
+.tag,
+.asong,
+.saudio {
+    width: 60px;
+}
+
+.collector {
+    width: 100px;
+}
+
+.listname {
+    position: absolute;
+    top: 90px;
+    left: 470px;
+    font-size: 27px;
+}
