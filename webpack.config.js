@@ -92,6 +92,7 @@ module.exports = {
                     'style-loader',
                     'css-loader'
                 ]
+
             },
             // {
             //     test: /\.css$/i,
@@ -121,6 +122,9 @@ module.exports = {
                 test: /\.html$/,
                 // 处理Html中img图片（负责引入img，从而能被url-loader进行处理）
                 loader: 'html-loader',
+                options: {
+                    sources: false
+                }
             }, {
                 test: /\.js$/,
                 use: {
@@ -160,18 +164,6 @@ module.exports = {
             //         esModule: false,
             //     }
             // },
-            {
-                test: /\.(csv|tsv)$/,
-                use: [
-                    'csv-loader'
-                ]
-            },
-            {
-                test: /\.xml$/,
-                use: [
-                    'xml-loader'
-                ]
-            }
         ]
     },
     // rules: {
@@ -183,20 +175,6 @@ module.exports = {
     //         formatter: require('eslint-friendly-formatter') // 指定错误报告的格式规范
     //     }
     // },
-
-    // module: {
-    //     rules: [{
-    //         test: /\.js$/,
-    //         use: [{
-    //             loader: 'babel-loader',
-    //             options: {
-    //                 presets: ['es2015']
-    //             }
-    //         }],
-    //         exclude: /node_modules/
-    //     }]
-    // },
-
     devServer: {
         static: {
             directory: path.join(__dirname, "/dist")

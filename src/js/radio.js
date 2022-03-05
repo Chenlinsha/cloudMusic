@@ -41,6 +41,13 @@ const textarea = document.querySelector('textarea')
 let up = document.querySelector(".down")
 console.log(up);
 let down1 = document.querySelector(".up")
+
+async function getFetch(url) {
+    let response = await fetch(url)
+    let res = await response.json()
+    //  console.log(res);
+    return res
+}
 // up.onclick = function () {
 //     fetch(`http://redrock.udday.cn:2022/song/url?id=${ids[index]}`).then((res) => {
 //         return res.json()
@@ -219,24 +226,17 @@ go.onclick = function () {
     window.history.go(1)
     console.log(2);
 }
-document.addEventListener('keydown', function (e) {
+document.addEventListener('keydown', async function (e) {
     let theEvent = e || window.event;
     let code = theEvent.keyCode || theEvent.which || theEvent.charCode;
     if (code == 13) {
         //回车执行查询
-        fetch(`http://redrock.udday.cn:2022/search?keywords=${searchbox.value}`, {
-            method: 'Get'
-        }).then((res) => {
-            return res.json()
-        }).then((res) => {
-            console.log(res);
-            return res.result.songs;
-        }).then((res) => {
-            localStorage.setItem("res", JSON.stringify(res))
-            localStorage.setItem("searchvalue", searchbox.value)
-            window.location.replace("..\\html\\search.html")
-            console.log(res);
-        })
+        let res = getFetch(`http://redrock.udday.cn:2022/search?keywords=${searchbox.value}`)
+        res = res.result.songs;
+        localStorage.setItem("res", JSON.stringify(res))
+        localStorage.setItem("searchvalue", searchbox.value)
+        window.location.replace("..\\html\\search.html")
+        console.log(res);
     }
 })
 
@@ -336,7 +336,6 @@ fetch(`http://redrock.udday.cn:2022/playlist/detail?id=${lid}`).then((res) => {
                 li.style.padding = '0';
                 li.style.color = '#999'
                 li.style.transition = '0.3'
-
                 dia.appendChild(li);
             }
         }
@@ -438,7 +437,7 @@ fetch(`http://redrock.udday.cn:2022/playlist/detail?id=${lid}`).then((res) => {
         circle.src = res.playlist.tracks[i].al.picUrl
         Audio.play()
     }
-    up.onclick = function () {
+    up.onclick = async function () {
         console.log(res.playlist.tracks[i].id);
         fetch(`http://redrock.udday.cn:2022/song/url?id=${res.playlist.tracks[i].id}`).then((res) => {
             return res.json()

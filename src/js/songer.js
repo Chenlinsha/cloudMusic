@@ -54,11 +54,6 @@ async function getUserByAsync() {
 getUserByAsync().then(res => console.log(res));
 
 function myRemove() {
-    // ul.childNodes.forEach((ele, i) => {
-    //     while (ul.hasChildNodes()) {
-    //         ul.removeChild(ul.childNodes[i]);
-    //     }
-    // })
     ul.innerHTML = ''
 }
 // console.log(li);

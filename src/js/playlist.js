@@ -41,107 +41,71 @@ function GetUrlPara() {
     return null;
 }
 
-
-fetch(`http://redrock.udday.cn:2022/playlist/detail?id=${lid}`).then((res) => {
-        return res.json();
-    })
-    .then((res) => {
-        tag.innerHTML = res.playlist.tags
-        song.innerHTML = res.playlist.trackCount
-        saudio.innerHTML = res.playlist.playCount
-        exp.innerHTML = res.playlist.description
-        pic.src = res.playlist.coverImgUrl
-        listname.innerHTML = res.playlist.name
-        touxiang.src = res.playlist.creator.avatarUrl
-        name1.innerHTML = res.playlist.creator.nickname
-        return res.playlist.tracks
-    })
-    .then((res) => {
-        for (let i = 0; i < res.length; i++) {
-            songerlist.push(res[i].ar[0].name);
-            names.push(res[i].name)
-
-            let li = document.createElement("li")
-            li.setAttribute('class', 'onesong')
-            let num = document.createElement("span")
-            let name = document.createElement("span")
-            let songer1 = document.createElement("span")
-            let cd = document.createElement("span")
-            name.setAttribute('class', 'name2')
-            num.setAttribute('class', 'num')
-            songer1.setAttribute('class', 'songer2')
-            cd.setAttribute('class', 'cd')
-            // if (i < 9) {
-            //     let value = i + 1
-            //     num.innerHTML = "0" + value
-            // } else {
-            //     num.innerHTML = i + 1
-            // }
-            num.innerHTML = i < 9 ? "0" + (i + 1) : i + 1
-            name.innerHTML = res[i].name
-            songer1.innerHTML = res[i].ar[0].name
-            songs.appendChild(li)
-            li.appendChild(num)
-            let img1 = document.createElement("img")
-            let img2 = document.createElement("img")
-            img1.setAttribute('src', '../images/love.PNG')
-            img2.setAttribute('src', '../images/download2.PNG')
-            li.appendChild(img1)
-            li.appendChild(img2)
-            li.appendChild(name)
-            li.appendChild(songer1)
-            ids.push(res[i].id)
-            // li.innerHTML = `
-            //     <img src='../images/love.png' />
-            //     <img src='../images/download2.png' />
-            // `
-            let smallli = document.createElement("li")
-            radioSongs.appendChild(smallli)
-            smallli.setAttribute('class', 'onesong')
-            lis.push(smallli)
-
-            smallli.innerHTML = li.innerHTML
-            let id = res[i].id
-            buttonpic.push(res[i].al.picUrl)
-            let src1 = res[i].al.picUrl
-            smallli['onclick'] = x => {
-
-                buttoning.src = src1
-                for (let j = 0; j < lis.length; j++) {
-                    lis[j].style.color = "black"
-                    smallli.style.color = "red"
-                }
-                songer2.innerHTML = res[i].ar[0].name
-                song1.innerHTML = res[i].name
-                fetch(`http://redrock.udday.cn:2022/song/url?id=${id}`)
-                    .then(res => res.json())
-                    .then(res => {
-                        Audio.src = res.data[0].url
-                        buttoning['onclick'] = () => {
-                            window.location.replace(`..\\html\\radio.html?i=!${i}&ids=`
-                                `!${lid}`)
-                        }
-                    })
-            }
-            li['onclick'] = x => {
-                buttoning.src = src1
-                songer2.innerHTML = res[i].ar[0].name
-                for (let j = 0; j < lis.length; j++) {
-                    lis[j].style.color = "black"
-                    smallli.style.color = "red"
-                }
-                song1.innerHTML = res[i].name
-                fetch(`http://redrock.udday.cn:2022/song/url?id=${id}`).then((res) => {
-                    return res.json()
-                }).then((res) => {
-                    Audio.src = res.data[0].url
-                    buttoning['onclick'] = x => {
-                        window.location.replace(`radio.html?i=!${i}&ids=!${lid}`)
-                    }
-                })
+async function getFetch(url) {
+    let response = await fetch(url)
+    let res = await response.json()
+    //  console.log(res);
+    return res
+}
+async function getDetail() {
+    let res = await getFetch(`http://redrock.udday.cn:2022/playlist/detail?id=${lid}`)
+    tag.innerHTML = res.playlist.tags
+    song.innerHTML = res.playlist.trackCount
+    saudio.innerHTML = res.playlist.playCount
+    exp.innerHTML = res.playlist.description
+    pic.src = res.playlist.coverImgUrl
+    listname.innerHTML = res.playlist.name
+    touxiang.src = res.playlist.creator.avatarUrl
+    name1.innerHTML = res.playlist.creator.nickname
+    res = res.playlist.tracks
+    res.forEach((ele, i) => {
+        songerlist.push(res[i].ar[0].name);
+        names.push(res[i].name)
+        let li = document.createElement("li")
+        li.setAttribute('class', 'onesong')
+        li.innerHTML = `<img src="../images/love.PNG" > <img src="../images/download.PNG" ><span class="num">${i < 9 ? "0" + (i + 1)  : i + 1}</span><span class="name2">${res[i].name}</span><span
+        class="songer2">${ res[i].ar[0].name}</span><span class="cd"></span>`
+        songs.appendChild(li)
+        ids.push(res[i].id)
+        let smallli = document.createElement("li")
+        smallli.setAttribute('class', 'onesong')
+        smallli.innerHTML = li.innerHTML
+        let id = res[i].id
+        buttonpic.push(res[i].al.picUrl)
+        let src1 = res[i].al.picUrl
+        smallli['onclick'] = async () => {
+            buttoning.src = src1
+            lis.forEach((ele, j) => {
+                lis[j].style.color = "black"
+                smallli.style.color = "red"
+            })
+            songer2.innerHTML = res[i].ar[0].name
+            song1.innerHTML = res[i].name
+            let data = getFetch(`http://redrock.udday.cn:2022/song/url?id=${id}`)
+            Audio.src = data.data[0].url
+            buttoning['onclick'] = () => {
+                window.location.replace(`..\\html\\radio.html?i=!${i}&ids=`
+                    `!${lid}`)
             }
         }
+        li['onclick'] = async () => {
+            buttoning.src = src1
+            songer2.innerHTML = res[i].ar[0].name
+            lis.forEach((ele, j) => {
+                lis[j].style.color = "black"
+                smallli.style.color = "red"
+            })
+            song1.innerHTML = res[i].name
+            let data = await getFetch(`http://redrock.udday.cn:2022/song/url?id=${id}`)
+            Audio.src = data.data[0].url
+            buttoning['onclick'] = x => {
+                window.location.replace(`radio.html?i=!${i}&ids=!${lid}`)
+            }
+        }
+
     })
+}
+getDetail()
 
 function switchAudio() {
     document.querySelector(".song").innerHTML = names[index]
@@ -149,47 +113,37 @@ function switchAudio() {
         lis[j].style.color = "black"
         lis[index].style.color = "red"
     }
-
     document.querySelector(".songer1").innerHTML = songerlist[index]
     Audio.play()
 }
 
-up.onclick = function () {
-    fetch(`http://redrock.udday.cn:2022/song/url?id=${ids[index]}`).then((res) => {
-        return res.json()
-    }).then((res) => {
-        index++;
-        if (index == names.length)
-            index = 0
-        Audio.src = res.data[0].url
-    })
-
+up.onclick = async function () {
+    let res = await getFetch(`http://redrock.udday.cn:2022/song/url?id=${ids[index]}`)
+    index++;
+    if (index == names.length)
+        index = 0
+    Audio.src = res.data[0].url
     switchAudio()
 }
-down1.onclick = function () {
-    fetch(`http://redrock.udday.cn:2022/song/url?id=${ids[index]}`).then((res) => {
-        return res.json()
-    }).then((res) => {
-        index = index - 1
-        if (index == -1) {
-            index = names.length - 1
-        }
-        Audio.src = res.data[0].url
-    })
-
+down1.onclick = async function () {
+    let res = await getFetch(`http://redrock.udday.cn:2022/song/url?id=${ids[index]}`)
+    index = index - 1
+    if (index == -1) {
+        index = names.length - 1
+    }
+    Audio.src = res.data[0].url
     switchAudio()
 }
 contianer.onclick = x => {
     conright.style.display = "none"
     console.log(conright.style.disply);
-
 }
-//conright.style.disply = "none"
+
 radiolist.onclick = () => {
     conright.style.display = "block"
-    // console.log(conright.style);
 
 }
+
 // songs.onclick = x => {
 //     conright.style.disply = "block"
 //     console.log(2);

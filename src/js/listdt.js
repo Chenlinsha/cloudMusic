@@ -10,52 +10,42 @@ item.onclick = function () {
     one.style.display = "block"
     console.log(1);
 }
-fetch('http://redrock.udday.cn:2022/playlist/catlist').then((res) => {
-    return res.json()
-}).then((res) => {
-    console.log(res);
-    console.log(res.sub.length);
-    for (let i = 0; i < res.sub.length; i++) {
+async function getFetch(url) {
+    let response = await fetch(url)
+    let res = await response.json()
+    //  console.log(res);
+    return res
+}
+async function getCatlist() {
+    let res = await getFetch('http://redrock.udday.cn:2022/playlist/catlist')
+    res.sub.forEach((ele, i) => {
         let li = document.createElement("li")
         li.setAttribute('class', 'category')
         li.innerHTML = res.sub[i].name
+        console.log(1);
+        console.log(cat);
         cat.appendChild(li)
         category.push(res.sub[i].name)
-        console.log(category);
-        li.onclick = function () {
-            fetch(`http://redrock.udday.cn:2022/top/playlist?cat=${category[i]}`).then((res) => {
-                return res.json()
-            }).then((res) => {
-                //s console.log(res);
-                for (let j = 0; j < res.playlists.length; j++) {
-                    let div = document.createElement("div")
-                    let span = document.createElement("span")
-                    span.innerHTML = res.playlists[j].name
-                    span.setAttribute('positon', 'absolute')
-                    span.setAttribute('top', '0px')
-                    div.setAttribute('class', 'pic')
-                    let button = document.createElement("button")
-                    let img = document.createElement("img")
-                    let a = document.createElement("a")
-                    img['onclick'] = x => {
-                        window.location.replace(`..\\html\\playlist.html?id=${res.playlists[j].id}`)
-                    }
-                    a.setAttribute('class', 'playlista')
-                    a.appendChild(img)
-                    div.appendChild(a)
-                    ul.appendChild(div)
-                    div.appendChild(button)
-                    div.appendChild(span)
-                    img.src = res.playlists[j].coverImgUrl
-                    //console.log(div);
+        li.onclick = async () => {
+            let res = await getFetch(`http://redrock.udday.cn:2022/top/playlist?cat=${category[i]}`)
+            ul.innerHTML = ''
+            res.playlists.forEach((ele, i) => {
+                let div = document.createElement("div")
+                div.setAttribute('class', 'pic')
+                div.innerHTML = `<a class="playlista"><img position="absolute" top="0px" src="${res.playlists[i].coverImgUrl}">
+              </a><button></button><span>${res.playlists[i].name}</span>`
+                ul.appendChild(div)
+                div.addEventListener('click', () => {
+                    window.location.replace(`..\\html\\playlist.html?id=${res.playlists[i].id}`)
+
+                })
+                one.style.display = "none"
+                div.onclick = function () {
                     one.style.display = "none"
-                    console.log(3);
-                    div.onclick = function () {
-                        one.style.display = "none"
-                        console.log(3);
-                    }
                 }
             })
-        }
-    }
-})
+
+        };
+    })
+}
+getCatlist()

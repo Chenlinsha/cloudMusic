@@ -286,7 +286,6 @@ async function getHot() {
       let res = await getFetch(`http://redrock.udday.cn:2022/search?keywords=${hots[i]}`)
       //  return res.result.songs;
       let songs = await res.result.songs
-
       localStorage.setItem("res", JSON.stringify(songs))
       localStorage.setItem("searchvalue", searchbox.value)
       window.location.replace("../html/search.html")

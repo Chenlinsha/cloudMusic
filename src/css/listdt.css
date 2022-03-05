@@ -30,7 +30,7 @@
     border: 1px solid #ccc;
     flex-wrap: wrap;
     z-index: 3;
-
+    background-color: #fff;
 }
 
 .one {
@@ -79,7 +79,4 @@
     text-align: center;
     font-weight: bold;
     border-bottom: 4px solid rgb(236, 65, 65);
-
-
-
 }

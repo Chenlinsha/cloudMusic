@@ -36,6 +36,7 @@
     "express": "^4.17.3",
     "file-loader": "^6.2.0",
     "handlebars": "^4.7.7",
+    "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.0",
     "style-loader": "^3.3.1",
@@ -49,8 +50,6 @@
   },
   "dependencies": {
     "eslint-friendly-formatter": "^4.0.1",
-    "html-loader": "^3.1.0",
     "terser-webpack-plugin": "^5.3.1"
   }
 }
- 

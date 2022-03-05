@@ -222,6 +222,8 @@ img {
     bottom: 0px;
 }
 
+
+
 .buttomimg {
     position: absolute;
     height: 55px;
@@ -298,15 +300,27 @@ img {
     color: rgb(236, 65, 65);
 }
 
-.on button {
+.on {
     position: absolute;
     height: 35px;
     width: 35px;
     left: 45%;
-    background-color: rgb(117, 115, 115);
+    background-color: rgb(196, 194, 194);
     border-radius: 50%;
     opacity: .5;
     bottom: 17px;
+}
+
+.on:hover {
+    background-color: rgb(153, 153, 153);
+}
+
+.on button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+    margin-left: 13px;
+    margin-top: 8px;
 }
 
 .icon7 {

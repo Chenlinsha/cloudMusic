@@ -1,5 +1,5 @@
 // import('../src/css/playlist.css')
-let cookie =  localStorage.getItem("cookie")
+let cookie = localStorage.getItem("cookie")
 let nickname = document.querySelector('.name')
 let imgtouxiang = document.querySelector('.pictou')
 let atouxiang = document.querySelector('.atouxiang')
@@ -14,82 +14,48 @@ const songer2 = document.querySelector('.songer1')
 let songs = document.querySelector('.songs')
 let pic = document.querySelector('.pic')
 let ids = []
-nickname.innerHTML =  localStorage.getItem("res.profile.nickname")
-imgtouxiang.src =  localStorage.getItem("res.profile.avatarUr")
-atouxiang.src =  localStorage.getItem("res.profile.avatarUr")
-myname.innerHTML =  localStorage.getItem("res.profile.nickname")
+nickname.innerHTML = localStorage.getItem("res.profile.nickname")
+imgtouxiang.src = localStorage.getItem("res.profile.avatarUr")
+atouxiang.src = localStorage.getItem("res.profile.avatarUr")
+myname.innerHTML = localStorage.getItem("res.profile.nickname")
 
-fetch(`http://redrock.udday.cn:2022/likelist?uid=${userid}&cookie=${cookie}`).then((res) => {
-    return res.json()
-}).then((res) => {
-    ids = res.ids
-
-    for (let i = 0; i < ids.length; i++) {
-        fetch(`http://redrock.udday.cn:2022/song/detail?ids=${ids[i]}`).then((res) => {
-            return res.json()
-        }).then((res) => {
-            let ul = document.querySelector('.songs1')
-            for (let j = 0; j < res.songs.length; j++) {
-                songerlist.push(res.songs[j].ar[0].name)
-                names.push(res.songs[j].name)
-                let li = document.createElement("li")
-                li.setAttribute('class', 'onesong')
-                let num = document.createElement("span")
-                let name = document.createElement("span")
-                let songer1 = document.createElement("span")
-                let cd = document.createElement("span")
-                name.setAttribute('class', 'name2')
-                num.setAttribute('class', 'num')
-                songer1.setAttribute('class', 'songer2')
-                cd.setAttribute('class', 'cd')
-                if (i < 9) {
-                    let value = i + 1
-                    num.innerHTML = "0" + value.toString()
-                } else {
-                    num.innerHTML = i + 1
-                }
-                buttonpic.push(res.songs[j].al.picUrl)
-                name.innerHTML = res.songs[j].name
-                songer1.innerHTML = res.songs[j].ar[0].name
-                songs.appendChild(li)
-                li.appendChild(num)
-                let img1 = document.createElement("img")
-                let img2 = document.createElement("img")
-                img1.setAttribute('src', '../images/love.PNG')
-                img2.setAttribute('src', '../images/download2.PNG')
-                li.appendChild(img1)
-                li.appendChild(img2)
-                li.appendChild(name)
-                li.appendChild(songer1)
-                ul.appendChild(li)
-                 localStorage.setItem("piclove", res.songs[j].al.picUrl)
-                 localStorage.setItem("songpic", res.songs[0].al.picUrl)
-
-                let piclove =  localStorage.getItem("piclove")
-                let id = res.songs[j].id
-
-                li['onclick'] = x => {
-                    buttoning.src = piclove
-                    songer2.innerHTML = res.songs[j].ar[0].name
-                    song1.innerHTML = res.songs[j].name
-                    fetch(`http://redrock.udday.cn:2022/song/url?id=${id}`).then((res) => {
-                        return res.json()
-                    }).then((res) => {
-                        console.log(id);
-                        Audio.src = res.data[0].url
-                         localStorage.setItem("src", res.data[0].url)
-                    })
-                }
+async function getFetch(url) {
+    let response = await fetch(url)
+    let res = await response.json()
+    //  console.log(res);
+    return res
+}
+async function getLikelist() {
+    const res = await getFetch(`http://redrock.udday.cn:2022/likelist?uid=${userid}&cookie=${cookie}`)
+    const ids = res.ids
+    ids.forEach(async (ele, i) => {
+        const data = await getFetch(`http://redrock.udday.cn:2022/song/detail?ids=${ids[i]}`)
+        let ul = document.querySelector('.songs1')
+        data.songs.forEach((ele, i) => {
+            songerlist.push(data.songs[i].ar[0].name)
+            names.push(data.songs[i].name)
+            let li = document.createElement("li")
+            li.setAttribute('class', 'onesong')
+            li.innerHTML = `<img src="../images/love.PNG" > <img src="../images/download.PNG" ><span class="num">${i < 9 ? "0" + (i + 1)  : i + 1}</span><span class="name2">${data.songs[i].name}</span><span
+            class="songer2">${data.songs[i].ar[0].name}</span><span class="cd"></span>`
+            buttonpic.push(data.songs[i].al.picUrl)
+            ul.appendChild(li)
+            pic.src = data.songs[i].al.picUrl
+            li['onclick'] = async () => {
+                let id = data.songs[i].id
+                buttoning.src = data.songs[i].al.picUrl
+                songer2.innerHTML = data.songs[i].ar[0].name
+                song1.innerHTML = data.songs[i].name
+                let res = await getFetch(`http://redrock.udday.cn:2022/song/url?id=${id}`)
+                console.log(id);
+                Audio.src = res.data[0].url
+                localStorage.setItem("src", res.data[0].url)
             }
         })
-
-    }
-})
-console.log( localStorage.getItem("songpic"));
-pic.src =  localStorage.getItem("songpic")
-
-//-------------------------------------------------------------------------------------
-
+    });
+}
+getLikelist()
+//------------------------------------------------------------------------------------
 function transTime(value) {
     let time = '';
     let h = parseInt(`${value / 3600}`);
