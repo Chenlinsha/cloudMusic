@@ -22,6 +22,7 @@ let radioSongs = document.querySelector('.radiosongs')
 let lis = []
 let radiolist = document.querySelector('.radiolist')
 let conright = document.querySelector('.conright')
+let lid = GetUrlPara();
 
 function GetUrlPara() {
     let url = document.location.toString(); //获取当前URL
@@ -40,12 +41,11 @@ function GetUrlPara() {
     return null;
 }
 
-let lid = GetUrlPara();
+
 fetch(`http://redrock.udday.cn:2022/playlist/detail?id=${lid}`).then((res) => {
         return res.json();
     })
     .then((res) => {
-
         tag.innerHTML = res.playlist.tags
         song.innerHTML = res.playlist.trackCount
         saudio.innerHTML = res.playlist.playCount
@@ -71,12 +71,13 @@ fetch(`http://redrock.udday.cn:2022/playlist/detail?id=${lid}`).then((res) => {
             num.setAttribute('class', 'num')
             songer1.setAttribute('class', 'songer2')
             cd.setAttribute('class', 'cd')
-            if (i < 9) {
-                let value = i + 1
-                num.innerHTML = "0" + value.toString()
-            } else {
-                num.innerHTML = i + 1
-            }
+            // if (i < 9) {
+            //     let value = i + 1
+            //     num.innerHTML = "0" + value
+            // } else {
+            //     num.innerHTML = i + 1
+            // }
+            num.innerHTML = i < 9 ? "0" + (i + 1) : i + 1
             name.innerHTML = res[i].name
             songer1.innerHTML = res[i].ar[0].name
             songs.appendChild(li)
@@ -90,6 +91,10 @@ fetch(`http://redrock.udday.cn:2022/playlist/detail?id=${lid}`).then((res) => {
             li.appendChild(name)
             li.appendChild(songer1)
             ids.push(res[i].id)
+            // li.innerHTML = `
+            //     <img src='../images/love.png' />
+            //     <img src='../images/download2.png' />
+            // `
             let smallli = document.createElement("li")
             radioSongs.appendChild(smallli)
             smallli.setAttribute('class', 'onesong')
@@ -108,14 +113,15 @@ fetch(`http://redrock.udday.cn:2022/playlist/detail?id=${lid}`).then((res) => {
                 }
                 songer2.innerHTML = res[i].ar[0].name
                 song1.innerHTML = res[i].name
-                fetch(`http://redrock.udday.cn:2022/song/url?id=${id}`).then((res) => {
-                    return res.json()
-                }).then((res) => {
-                    Audio.src = res.data[0].url
-                    buttoning['onclick'] = x => {
-                        window.location.replace(`..\\html\\radio.html?i=!${i}&ids=!${lid}`)
-                    }
-                })
+                fetch(`http://redrock.udday.cn:2022/song/url?id=${id}`)
+                    .then(res => res.json())
+                    .then(res => {
+                        Audio.src = res.data[0].url
+                        buttoning['onclick'] = () => {
+                            window.location.replace(`..\\html\\radio.html?i=!${i}&ids=`
+                                `!${lid}`)
+                        }
+                    })
             }
             li['onclick'] = x => {
                 buttoning.src = src1

@@ -53,36 +53,33 @@ async function getUserByAsync() {
 }
 getUserByAsync().then(res => console.log(res));
 
-function myremove() {
-    ul.childNodes.forEach((ele, i) => {
-        while (ul.hasChildNodes()) {
-            ul.removeChild(ul.childNodes[i]);
-        }
-    })
+function myRemove() {
+    // ul.childNodes.forEach((ele, i) => {
+    //     while (ul.hasChildNodes()) {
+    //         ul.removeChild(ul.childNodes[i]);
+    //     }
+    // })
+    ul.innerHTML = ''
 }
-console.log(li);
-//ul.removeChild(li)
-console.log(interLi);
+// console.log(li);
+// ul.removeChild(li)
+// console.log(interLi);
 interLi.forEach((ele, i) => {
-    interLi[i].addEventListener('click', function () {
-        myremove()
-
-        if (int)
-            int1 = ints[i]
-        else {
-            int = -1
-        }
+    ele.addEventListener('click', function () {
+        myRemove()
+        int ? int1 = ints[i] : int = -1;
         getUserByAsync()
     })
 })
-for (let i = 0; i < interLi.length; i++) {
-    console.log(interLi[i]);
 
-}
+// for (let i = 0; i < interLi.length; i++) {
+//     console.log(interLi[i]);
+// }
+
 console.log(catLi);
 for (let i = 0; i < catLi.length; i++) {
     catLi[i].addEventListener('click', function () {
-        myremove()
+        myRemove()
         if (int)
             int1 = ints[i]
         else {
@@ -91,3 +88,7 @@ for (let i = 0; i < catLi.length; i++) {
         getUserByAsync()
     })
 }
+
+catLi.forEach(item => {
+
+})

@@ -14,7 +14,7 @@ let songname = document.querySelector('.song-name')
 let album = document.querySelector('.album')
 let songer3 = document.querySelector('.songer')
 let circle = document.querySelector('#circle-pic')
- localStorage.getItem("token")
+localStorage.getItem("token")
 // let res = JSON.parse( localStorage.getItem("res"))
 // names.push(res[i].name)
 // ids.push(res[i].id)
@@ -232,8 +232,8 @@ document.addEventListener('keydown', function (e) {
             console.log(res);
             return res.result.songs;
         }).then((res) => {
-             localStorage.setItem("res", JSON.stringify(res))
-             localStorage.setItem("searchvalue", searchbox.value)
+            localStorage.setItem("res", JSON.stringify(res))
+            localStorage.setItem("searchvalue", searchbox.value)
             window.location.replace("..\\html\\search.html")
             console.log(res);
         })
@@ -260,16 +260,14 @@ function GetUrlPara() {
     if (url.indexOf("?") != -1) { //判断URL？后面不为空
         let arrUrl = url.split("?"); //分割？
         let para = arrUrl[1]; //获取参数部分
-        if (para) //判断传入的参数部分不为空
-        {
-            let arr = para.split("!");
-            let res = arr.slice(1, 4)
-            console.log(res); //分割=
+        if (para) { //判断传入的参数部分不为空
+            const arr = para.split("!");
+            const res = arr.slice(1, 4)
+            // console.log(res); //分割=
             // var res = arr[1]; //获取参数的值
             return res;
         }
     }
-    return null;
 }
 let res = GetUrlPara();
 console.log(res);
@@ -468,10 +466,10 @@ fetch(`http://redrock.udday.cn:2022/playlist/detail?id=${lid}`).then((res) => {
     }
 })
 
-songerlist.push( localStorage.getItem("songer"))
-songname.innerHTML =  localStorage.getItem("song")
-names.push( localStorage.getItem("song"))
-imgs.push( localStorage.getItem("pic"))
+songerlist.push(localStorage.getItem("songer"))
+songname.innerHTML = localStorage.getItem("song")
+names.push(localStorage.getItem("song"))
+imgs.push(localStorage.getItem("pic"))
 
 console.log(songerlist);
 //buttoning.src =  localStorage.getItem("pic")
