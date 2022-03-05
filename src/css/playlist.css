@@ -6,7 +6,6 @@
     height: 80%;
     overflow: scroll;
     overflow-x: hidden;
-
 }
 
 .container {
@@ -266,16 +265,16 @@
 
 .songer2 {
     position: absolute;
-    left: 800px;
+    left: 60%;
     height: 30px;
-    width: 400px;
+    width: 30%;
 }
 
 .songs {
     overflow: scroll;
     overflow-x: hidden;
     height: 349px;
-    width: 1190px;
+    width: 84%;
 }
 
 .songs :nth-child(2n+1) {

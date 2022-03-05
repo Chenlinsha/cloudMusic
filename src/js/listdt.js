@@ -6,6 +6,8 @@ let category = []
 let ul = document.querySelector('.picf')
 let one = document.querySelector('.one')
 const buttoning = document.querySelector('.buttomimg')
+const index = document.querySelector('#tab2')
+const song = document.querySelector('#tab3')
 item.onclick = function () {
     one.style.display = "block"
     console.log(1);
@@ -37,7 +39,6 @@ async function getCatlist() {
                 ul.appendChild(div)
                 div.addEventListener('click', () => {
                     window.location.replace(`..\\html\\playlist.html?id=${res.playlists[i].id}`)
-
                 })
                 one.style.display = "none"
                 div.onclick = function () {
@@ -49,3 +50,5 @@ async function getCatlist() {
     })
 }
 getCatlist()
+index.onclick = () => window.location.replace("..\\html\\cloudmusic.html")
+song.onclick = () => window.location.replace("..\\html\\songer.html")

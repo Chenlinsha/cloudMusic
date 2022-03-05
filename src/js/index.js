@@ -345,3 +345,7 @@ tab2.onclick = x => {
   window.location.replace("../html/listdt.html")
   console.log(2);
 }
+conmiddle.onclick = () => {
+  hot.style.display = "none"
+  login1.style.display = "none"
+}

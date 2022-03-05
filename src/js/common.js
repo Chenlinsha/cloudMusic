@@ -13,7 +13,6 @@ let volumeNow = document.querySelector(".volume-now")
 let volumeMax = document.querySelector(".volume-max")
 let dot = document.querySelector(".volume-control-dot")
 let btnif = true
-
 const textarea = document.querySelector('textarea')
 let contianer = document.querySelector('.contianer')
 let up = document.querySelector(".down")
@@ -90,6 +89,7 @@ contorl.addEventListener('click', e => {
     if (e.target.innerText === '▶') {
         e.target.innerText = '┃┃';
         Audio.play();
+        circle
 
     } else {
         e.target.innerText = '▶';
@@ -201,11 +201,9 @@ dot.onmousedown = function (e) {
 
 back.onclick = function () {
     window.history.back(1)
-    console.log(1);
 }
 go.onclick = function () {
     window.history.go(1)
-    console.log(2);
 }
 document.addEventListener('keydown', function (e) {
     let theEvent = e || window.event;

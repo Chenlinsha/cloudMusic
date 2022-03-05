@@ -13,7 +13,6 @@ const song1 = document.querySelector('.song')
 const songer2 = document.querySelector('.songer1')
 let ids = []
 let names = []
-
 let songerlist = []
 let index = 0
 let buttonpic = []
@@ -23,6 +22,7 @@ let lis = []
 let radiolist = document.querySelector('.radiolist')
 let conright = document.querySelector('.conright')
 let lid = GetUrlPara();
+let sound = document.querySelector('.sound')
 
 function GetUrlPara() {
     let url = document.location.toString(); //获取当前URL
@@ -63,22 +63,25 @@ async function getDetail() {
         names.push(res[i].name)
         let li = document.createElement("li")
         li.setAttribute('class', 'onesong')
-        li.innerHTML = `<img src="../images/love.PNG" > <img src="../images/download.PNG" ><span class="num">${i < 9 ? "0" + (i + 1)  : i + 1}</span><span class="name2">${res[i].name}</span><span
+        li.innerHTML = `<span class="num">${i < 9 ? "0" + (i + 1)  : i + 1}</span><img src="../images/love.PNG" > <img src="../images/download.PNG" ><span class="name2">${res[i].name}</span><span
         class="songer2">${ res[i].ar[0].name}</span><span class="cd"></span>`
         songs.appendChild(li)
         ids.push(res[i].id)
         let smallli = document.createElement("li")
         smallli.setAttribute('class', 'onesong')
         smallli.innerHTML = li.innerHTML
+        radioSongs.appendChild(smallli)
         let id = res[i].id
         buttonpic.push(res[i].al.picUrl)
         let src1 = res[i].al.picUrl
-        smallli['onclick'] = async () => {
+        lis.push(smallli)
+        smallli['onclick'] = () => {
             buttoning.src = src1
-            lis.forEach((ele, j) => {
-                lis[j].style.color = "black"
+            for (let i = 0; i < lis.length; i++) {
+                console.log(lis);
+                lis[i].style.color = "black"
                 smallli.style.color = "red"
-            })
+            }
             songer2.innerHTML = res[i].ar[0].name
             song1.innerHTML = res[i].name
             let data = getFetch(`http://redrock.udday.cn:2022/song/url?id=${id}`)
@@ -134,17 +137,11 @@ down1.onclick = async function () {
     Audio.src = res.data[0].url
     switchAudio()
 }
-contianer.onclick = x => {
+sound.onclick = x => {
     conright.style.display = "none"
-    console.log(conright.style.disply);
 }
 
 radiolist.onclick = () => {
     conright.style.display = "block"
 
 }
-
-// songs.onclick = x => {
-//     conright.style.disply = "block"
-//     console.log(2);
-// }

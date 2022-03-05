@@ -13,11 +13,11 @@ let names = []
 let songerlist = []
 let index = 0
 let buttonpic = []
+let res = JSON.parse(localStorage.getItem("res"))
+let searchvalue = localStorage.getItem("searchvalue")
 
-
-let res = JSON.parse( localStorage.getItem("res"))
 console.log(res);
-let searchvalue =  localStorage.getItem("searchvalue")
+
 searchname.innerHTML = `搜索：${searchvalue}`
 for (let i = 0; i < res.length; i++) {
     let li = document.createElement("li")
@@ -42,8 +42,8 @@ for (let i = 0; i < res.length; i++) {
     } else {
         num.innerHTML = i + 1
     }
-    img1.setAttribute('src', 'PNG\\love.PNG')
-    img2.setAttribute('src', 'PNG\\download2.PNG')
+    img1.setAttribute('src', '../images/love.PNG')
+    img2.setAttribute('src', '../images/download2.PNG')
     name.innerHTML = res[i].name
     songer1.innerHTML = res[i].artists[0].name
     songs.appendChild(li)
@@ -67,10 +67,6 @@ for (let i = 0; i < res.length; i++) {
         })
     }
 }
-
-
-console.log( localStorage.getItem("token"));
-
 
 document.addEventListener('keydown', function (e) {
     let theEvent = e || window.event;
@@ -112,15 +108,14 @@ document.addEventListener('keydown', function (e) {
                     } else {
                         num.innerHTML = i + 1
                     }
-
                     name.innerHTML = res[i].name
                     songer1.innerHTML = res[i].artists[0].name
                     songs.appendChild(div)
                     console.log(div);
                     div.appendChild(li)
                     li.appendChild(num)
-                    img1.setAttribute('src', 'PNG\\love.PNG')
-                    img2.setAttribute('src', 'PNG\\download2.PNG')
+                    img1.setAttribute('src', '../images/love.PNG')
+                    img2.setAttribute('src', '../images/download2.PNG')
                     li.appendChild(img1)
                     li.appendChild(img2)
                     li.appendChild(name)

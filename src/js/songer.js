@@ -7,7 +7,8 @@ let interLi = document.querySelectorAll('.int')
 let li
 let int1, cat
 let int = document.querySelectorAll('.int')
-let catg = document.querySelectorAll('.catg')
+const index = document.querySelector('#tab2')
+const songlist = document.querySelector('#tab3')
 let ints = []
 let catgs = []
 let i
@@ -17,14 +18,10 @@ ints[1] = 7
 ints[2] = 96
 ints[3] = 8
 ints[4] = 16
-
-catgs.push(catg)
-
-
-catgs.forEach((ele, i) => {
-    ele = i == 0 ? -1 : i
-});
-
+catgs[0] = -1
+catgs[1] = 1
+catgs[2] = 2
+catgs[3] = 3
 async function getUserByAsync() {
     let response = await fetch(`http://redrock.udday.cn:2022/artist/list?type=${cat?cat:-1}&area=${int1?int1:-1}`)
     const movies = await response.json();
@@ -72,18 +69,25 @@ interLi.forEach((ele, i) => {
 // }
 
 console.log(catLi);
-for (let i = 0; i < catLi.length; i++) {
-    catLi[i].addEventListener('click', function () {
+// for (let i = 0; i < catLi.length; i++) {
+//     catLi[i].addEventListener('click', function () {
+//         myRemove()
+//         if (int)
+//             int1 = ints[i]
+//         else {
+//             int = -1
+//         }
+//         getUserByAsync()
+//     })
+// }
+
+catLi.forEach((item, i) => {
+    item.addEventListener('click', function () {
         myRemove()
-        if (int)
-            int1 = ints[i]
-        else {
-            int = -1
-        }
+        console.log(catLi[i]);
+        cat ? cat = catLi[i] : cat = -1;
         getUserByAsync()
     })
-}
-
-catLi.forEach(item => {
-
 })
+index.onclick = () => window.location.replace("..\\html\\cloudmusic.html")
+songlist.onclick = () => window.location.replace("..\\html\\listdt.html")

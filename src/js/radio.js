@@ -1,4 +1,3 @@
-//import('../src/css/radio.css')
 let musics = document.querySelectorAll('audio')
 const buttoning = document.querySelector('.buttomimg')
 const song1 = document.querySelector('.song')
@@ -9,17 +8,12 @@ let songerlist = []
 let ids = []
 let imgs = []
 let index = 0
-// let textarea = document.querySelector('textarea')
 let songname = document.querySelector('.song-name')
 let album = document.querySelector('.album')
 let songer3 = document.querySelector('.songer')
 let circle = document.querySelector('#circle-pic')
+let circle1 = document.querySelector('.circle-big')
 localStorage.getItem("token")
-// let res = JSON.parse( localStorage.getItem("res"))
-// names.push(res[i].name)
-// ids.push(res[i].id)
-// buttonpic.push(res[i].album.artist.img1v1Url)
-// songerlist.push(res[i].artists[0].name)
 let dia = document.querySelector('.dia')
 let volumecontorl = document.querySelector('.volume-control')
 let lyrics1 = document.querySelector('.lyrics')
@@ -36,11 +30,19 @@ let volumeMax = document.querySelector(".volume-max")
 let dot = document.querySelector(".volume-control-dot")
 let btnif = true
 const textarea = document.querySelector('textarea')
-
-
 let up = document.querySelector(".down")
-console.log(up);
 let down1 = document.querySelector(".up")
+let flag = false; // 标记是否拖动开始
+let back = document.querySelector('.hal')
+let go = document.querySelector('.har')
+let commend = document.querySelector('.commend')
+let icon10 = document.querySelector('.icon10')
+const position = {
+    oriOffestLeft: 0, // 移动开始时进度条的点距离进度条的偏移值
+    oriX: 0, // 移动开始时的x坐标
+    maxLeft: 0, // 向左最大可拖动距离
+    maxRight: 0, // 向右最大可拖动距离
+};
 
 async function getFetch(url) {
     let response = await fetch(url)
@@ -48,6 +50,7 @@ async function getFetch(url) {
     //  console.log(res);
     return res
 }
+
 // up.onclick = function () {
 //     fetch(`http://redrock.udday.cn:2022/song/url?id=${ids[index]}`).then((res) => {
 //         return res.json()
@@ -89,7 +92,7 @@ function transTime(value) {
 
     return time;
 }
-// 补零
+
 function formatTime(value) {
     let time = '';
     let s = value.split(':');
@@ -106,10 +109,11 @@ contorl.addEventListener('click', e => {
     if (e.target.innerText === '▶') {
         e.target.innerText = '┃┃';
         Audio.play();
-
+        circle1.style.webkitAnimationPlayState = 'running';
     } else {
         e.target.innerText = '▶';
         Audio.pause();
+        circle1.style.webkitAnimationPlayState = 'paused';
     }
 });
 
@@ -131,13 +135,7 @@ Audio.addEventListener('ended', e => {
 });
 
 
-const position = {
-    oriOffestLeft: 0, // 移动开始时进度条的点距离进度条的偏移值
-    oriX: 0, // 移动开始时的x坐标
-    maxLeft: 0, // 向左最大可拖动距离
-    maxRight: 0, // 向右最大可拖动距离
-};
-let flag = false; // 标记是否拖动开始
+
 
 const down = event => {
     if (!Audio.pause || Audio.currentTime !== 0) {
@@ -216,8 +214,7 @@ dot.onmousedown = function (e) {
         }
     }
 }
-let back = document.querySelector('.hal')
-let go = document.querySelector('.har')
+
 back.onclick = function () {
     window.history.back(1)
     console.log(1);
@@ -240,9 +237,9 @@ document.addEventListener('keydown', async function (e) {
     }
 })
 
-// volume.onclick = x => {
-//     volumecontorl.style.display = "block";
-// }
+volume.onclick = x => {
+    volumecontorl.style.display = "block";
+}
 let himg = document.querySelector('.himg')
 himg.onclick = x => window.location.replace("..\\html\\cloudmusic.html")
 // let userid =  localStorage.getItem("userid")
@@ -475,71 +472,8 @@ console.log(songerlist);
 console.log(names);
 
 
-// let tlyric = []
-// let temp111 = 0
-// let getLy = function () { //更新播放进度
-//     nowTime = document.querySelector('.audio').currentTime.toFixed(3)
-// }
-// let compare = function () {
-//     for (let i = 0; i < timeArr.length; i++) {
-//         if (nowTime > timeArr[i]) { //播放时间超出时间轴时间，代表这句歌词已经过去
-//             temp111 = i
-//         }
-//     }
-// }
-// let scroll = function () { //歌词滚动效果
-//     if (temp111 == 0) {
-//         lyricBox.querySelectorAll('p').forEach((currentValue) => { //排他思想改变样式
-//             currentValue.className = 'lyout'
-//         })
-//         lyricBox.querySelectorAll('p')[temp111].className = 'lyin'
-
-//     } else {
-//         lyricBox.querySelectorAll('p').forEach((currentValue) => {
-//             currentValue.className = 'lyout'
-//         })
-//         lyricBox.querySelectorAll('p')[temp111].className = 'lyin'
-//     }
-//     if (tlyric != '') { //如果有翻译，要滚得多一些
-//         lyricBox.scroll({
-//             top: (temp111) * 150,
-//             behavior: 'smooth'
-//         })
-//     } else {
-//         lyricBox.scroll({
-//             top: (temp111) * 90,
-//             behavior: 'smooth'
-//         })
-//     }
-// }
 
 
-
-// function roll() {
-//     //lyrics()
-//     let p = lyrics1.getElementsByTagName("p")
-//     //console.log(p);
-//     let curTime
-//     musics[0].addEventListener("timeupdate", function () {
-//         curTime = parseInt(this.currentTime)
-//         if (document.getElementById(curTime)) {
-//             for (let i = 0; i < p.length; i++) {
-//                 p[i].style.cssText = "font-size: 15px;"
-//             }
-//             console.log(document.getElementById(curTime));
-//             // let value = e.target.currentTime / Audio.duration;
-
-//             document.getElementById(curTime).style.cssText = "color: #000;font-size: 20px;"
-//             console.log(document.getElementById(curTime).style.top);
-
-//             //contorlDot.style.left = `${value * 100}%`;
-//         }
-//     })
-// }
-
-// roll()
-let commend = document.querySelector('.commend')
-let icon10 = document.querySelector('.icon10')
 
 buttoning['onclick'] = x => {
     window.location.replace("..\\html\\cloudmusic.html")
