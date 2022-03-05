@@ -92,11 +92,11 @@ fetch(`http://redrock.udday.cn:2022/playlist/detail?id=${id}`).then((res) => {
 
             li['onclick'] = x => {
                 console.log(res);
-                localStorage.setItem("pic", src1)
-                localStorage.setItem("alname", res[i].al.name);
-                localStorage.setItem("songer", res[i].ar[0].name)
-                localStorage.setItem("song", res[i].name)
-                localStorage.setItem("idl", id)
+                 localStorage.setItem("pic", src1)
+                 localStorage.setItem("alname", res[i].al.name);
+                 localStorage.setItem("songer", res[i].ar[0].name)
+                 localStorage.setItem("song", res[i].name)
+                 localStorage.setItem("idl", id)
                 buttoning.src = src1
                 console.log(src1);
                 console.log(id);
@@ -106,7 +106,7 @@ fetch(`http://redrock.udday.cn:2022/playlist/detail?id=${id}`).then((res) => {
                     return res.json()
                 }).then((res) => {
                     Audio.src = res.data[0].url
-                    localStorage.setItem("src", res.data[0].url)
+                     localStorage.setItem("src", res.data[0].url)
                 })
             }
         }

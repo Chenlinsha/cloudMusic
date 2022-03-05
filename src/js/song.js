@@ -80,11 +80,11 @@ fetch(`http://redrock.udday.cn:2022/artist/top/song?id=${id}`).then((res) => {
         buttonpic.push(res.songs[i].al.picUrl)
         li['onclick'] = x => {
             console.log(res);
-            localStorage.setItem("pic", src1)
-            localStorage.setItem("alname", res.songs[i].al.name);
-            // localStorage.setItem("songer", res[i].ar[0].name)
-            localStorage.setItem("song", res.songs[i].name)
-            localStorage.setItem("idl", id)
+             localStorage.setItem("pic", src1)
+             localStorage.setItem("alname", res.songs[i].al.name);
+            //  localStorage.setItem("songer", res[i].ar[0].name)
+             localStorage.setItem("song", res.songs[i].name)
+             localStorage.setItem("idl", id)
             buttoning.src = src1
             console.log(src1);
             console.log(id3);
@@ -95,7 +95,7 @@ fetch(`http://redrock.udday.cn:2022/artist/top/song?id=${id}`).then((res) => {
             }).then((res) => {
                 console.log(res);
                 Audio.src = res.data[0].url
-                localStorage.setItem("src", res.data[0].url)
+                 localStorage.setItem("src", res.data[0].url)
                 buttoning['onclick'] = x => {
                     window.location.replace(`radio.html?id=!${id3}`)
                 }

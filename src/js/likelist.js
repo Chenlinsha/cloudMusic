@@ -1,5 +1,5 @@
 // import('../src/css/playlist.css')
-let cookie = localStorage.getItem("cookie")
+let cookie =  localStorage.getItem("cookie")
 let nickname = document.querySelector('.name')
 let imgtouxiang = document.querySelector('.pictou')
 let atouxiang = document.querySelector('.atouxiang')
@@ -14,10 +14,10 @@ const songer2 = document.querySelector('.songer1')
 let songs = document.querySelector('.songs')
 let pic = document.querySelector('.pic')
 let ids = []
-nickname.innerHTML = localStorage.getItem("res.profile.nickname")
-imgtouxiang.src = localStorage.getItem("res.profile.avatarUr")
-atouxiang.src = localStorage.getItem("res.profile.avatarUr")
-myname.innerHTML = localStorage.getItem("res.profile.nickname")
+nickname.innerHTML =  localStorage.getItem("res.profile.nickname")
+imgtouxiang.src =  localStorage.getItem("res.profile.avatarUr")
+atouxiang.src =  localStorage.getItem("res.profile.avatarUr")
+myname.innerHTML =  localStorage.getItem("res.profile.nickname")
 
 fetch(`http://redrock.udday.cn:2022/likelist?uid=${userid}&cookie=${cookie}`).then((res) => {
     return res.json()
@@ -62,10 +62,10 @@ fetch(`http://redrock.udday.cn:2022/likelist?uid=${userid}&cookie=${cookie}`).th
                 li.appendChild(name)
                 li.appendChild(songer1)
                 ul.appendChild(li)
-                localStorage.setItem("piclove", res.songs[j].al.picUrl)
-                localStorage.setItem("songpic", res.songs[0].al.picUrl)
+                 localStorage.setItem("piclove", res.songs[j].al.picUrl)
+                 localStorage.setItem("songpic", res.songs[0].al.picUrl)
 
-                let piclove = localStorage.getItem("piclove")
+                let piclove =  localStorage.getItem("piclove")
                 let id = res.songs[j].id
 
                 li['onclick'] = x => {
@@ -77,7 +77,7 @@ fetch(`http://redrock.udday.cn:2022/likelist?uid=${userid}&cookie=${cookie}`).th
                     }).then((res) => {
                         console.log(id);
                         Audio.src = res.data[0].url
-                        localStorage.setItem("src", res.data[0].url)
+                         localStorage.setItem("src", res.data[0].url)
                     })
                 }
             }
@@ -85,8 +85,8 @@ fetch(`http://redrock.udday.cn:2022/likelist?uid=${userid}&cookie=${cookie}`).th
 
     }
 })
-console.log(localStorage.getItem("songpic"));
-pic.src = localStorage.getItem("songpic")
+console.log( localStorage.getItem("songpic"));
+pic.src =  localStorage.getItem("songpic")
 
 //-------------------------------------------------------------------------------------
 

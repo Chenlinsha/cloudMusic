@@ -1,6 +1,3 @@
-// import('../src/css/index.css')
-//import Icon1 from '../images/2.PNG'
-
 let leftb = document.querySelector('.left');
 let rightb = document.querySelector('.right');
 let box = document.querySelector('.box');
@@ -34,6 +31,8 @@ let search = document.querySelector('.search')
 let searchbox = document.querySelector('.hipt')
 let ul = document.querySelector('.picf')
 const buttoning = document.querySelector('.buttomimg')
+let hots = []
+let divs = []
 conmiddle.onclick = x => {
   hot.style.display = "none"
 
@@ -191,6 +190,7 @@ form.onsubmit = function () {
   login1.style.display = "none"
   return false
 }
+
 login['onclick'] = X => {
   fetch(`http://redrock.udday.cn:2022/login/cellphone?phone=${phone.value}&password=${password.value}`, {
       method: 'Post',
@@ -202,7 +202,6 @@ login['onclick'] = X => {
       localStorage.setItem("cookie", res.cookie);
       localStorage.setItem("token", res.token)
       localStorage.setItem("userid", res.bindings[0].id)
-
       localStorage.setItem("res.profile.nickname", res.profile.nickname)
       localStorage.setItem("res.profile.avatarUr", res.profile.avatarUrl)
       nickname.innerHTML = localStorage.getItem("res.profile.nickname")
@@ -210,21 +209,22 @@ login['onclick'] = X => {
     })
 
 }
-
-
+async function getFetch(url) {
+  let response = await fetch(url)
+  let res = await response.json()
+  //  console.log(res);
+  return res
+}
 let li
-fetch('http://redrock.udday.cn:2022/top/playlist/highquality?limit=10').then((res) => {
-  return res.text();
-}).then((res) => {
-  return JSON.parse(res)
-}).then((res) => {
-  return res.playlists
-}).then((res) => {
-  for (let i = 0; i < 10; i++) {
-    // console.log(res);
+async function getUserByAsync() {
+  let response = await fetch(`http://redrock.udday.cn:2022/top/playlist/highquality?limit=10`)
+  const res = await response.json();
+  const playlist = res.playlists
+  console.log(playlist);
+  for (let i = 0; i < playlist.length; i++) {
     li = document.createElement("li")
     let span = document.createElement("span")
-    span.innerHTML = res[i].name;
+    span.innerHTML = playlist[i].name;
     span.setAttribute('positon', 'absolute')
     span.setAttribute('top', '0px')
     li.setAttribute('class', 'pic')
@@ -233,9 +233,8 @@ fetch('http://redrock.udday.cn:2022/top/playlist/highquality?limit=10').then((re
     let img = document.createElement("img")
     let a = document.createElement("a")
     li['onclick'] = x => {
-      window.location.replace(`playlist.html?id=${res[i].id}`)
+      window.location.replace(`playlist.html?id=${ playlist[i].id}`)
     }
-
     a.appendChild(img)
     li.appendChild(a)
     ul.appendChild(li)
@@ -244,49 +243,34 @@ fetch('http://redrock.udday.cn:2022/top/playlist/highquality?limit=10').then((re
     div.innerHTML = "▶"
     div.style.color = "red"
     div.style.textAlign = "center"
-    img.src = res[i].coverImgUrl
-    // li.onclick = function () {
-    //   localStorage.setItem("ids", res[i].id)
-    // }
+    img.src = playlist[i].coverImgUrl
   }
-})
-//----------------------------------------------------
+}
+getUserByAsync()
+
 
 sidebar2.onclick = function () {
   sidebar2.style.height = 400 + "px"
 }
 let cookie = localStorage.getItem("cookie")
-
+let userid1 = localStorage.getItem("userid")
 localStorage.getItem("token")
 let likelist = document.querySelector('.likelist')
-
-fetch(`http://redrock.udday.cn:2022/likelist?uid=${userid}&cookie=${cookie}`).then((res) => {
-  return res.json()
-}).then((res) => {
+async function getLikelist() {
+  let res = await getFetch(`http://redrock.udday.cn:2022/likelist?uid=${userid1}&cookie=${cookie}`)
   let ids = []
   ids.push(res.ids);
+}
+getLikelist()
 
-})
-// let back = document.querySelector('.hal')
-// let go = document.querySelector('.har')
-// back.onclick = function () {
-//   window.history.back(1)
-//   console.log(1);
-// }
-// go.onclick = function () {
-//   window.history.go(1)
-//   console.log(2);
-// }
 likelist.onclick = () => {
   window.location.replace("../html/likelist.html")
 }
 
-let hots = []
-let divs = []
-fetch('http://redrock.udday.cn:2022/search/hot/detail').then((res) => {
-  return res.json()
-}).then((res) => {
-  // console.log(res);
+
+
+async function getHot() {
+  let res = await getFetch('http://redrock.udday.cn:2022/search/hot/detail')
   for (let i = 0; i < res.data.length; i++) {
     hots.push(res.data[i].searchWord)
     let span = document.createElement("span")
@@ -298,26 +282,51 @@ fetch('http://redrock.udday.cn:2022/search/hot/detail').then((res) => {
     div.appendChild(span)
     div.appendChild(li)
     span.innerHTML = i + 1
-    divs.push(div)
-    for (let f = 0; f < 3; f++) {
+    li.onclick = async function () {
+      let res = await getFetch(`http://redrock.udday.cn:2022/search?keywords=${hots[i]}`)
+      //  return res.result.songs;
+      let songs = await res.result.songs
 
-      //divs[f].setAttribute('class', 'top')
-    }
-    li.onclick = function () {
-      fetch(`http://redrock.udday.cn:2022/search?keywords=${hots[i]}`).then((res) => {
-        return res.json()
-      }).then((res) => {
-        console.log(res);
-        return res.result.songs;
-      }).then((res) => {
-        localStorage.setItem("res", JSON.stringify(res))
-        localStorage.setItem("searchvalue", searchbox.value)
-        window.location.replace("../html/search.html")
-        console.log(res);
-      })
+      localStorage.setItem("res", JSON.stringify(songs))
+      localStorage.setItem("searchvalue", searchbox.value)
+      window.location.replace("../html/search.html")
+      // console.log(res);
     }
   }
-})
+}
+getHot()
+
+getFetch('http://redrock.udday.cn:2022/search/hot/detail')
+  .then((res) => {
+    // console.log(res);
+    for (let i = 0; i < res.data.length; i++) {
+      hots.push(res.data[i].searchWord)
+      let span = document.createElement("span")
+      let li = document.createElement("li")
+      li.innerHTML = hots[i]
+      let div = document.createElement("div")
+      hot.appendChild(div)
+      li.setAttribute('class', 'hotli')
+      div.appendChild(span)
+      div.appendChild(li)
+      span.innerHTML = i + 1
+      divs.push(div)
+      for (let f = 0; f < 3; f++) {}
+      li.onclick = function () {
+        fetch(`http://redrock.udday.cn:2022/search?keywords=${hots[i]}`).then((res) => {
+          return res.json()
+        }).then((res) => {
+          console.log(res);
+          return res.result.songs;
+        }).then((res) => {
+          localStorage.setItem("res", JSON.stringify(res))
+          localStorage.setItem("searchvalue", searchbox.value)
+          window.location.replace("../html/search.html")
+          console.log(res);
+        })
+      }
+    }
+  })
 
 // let himg = document.querySelector('.himg')
 // himg.onclick = x => window.location.replace("网易云.html")

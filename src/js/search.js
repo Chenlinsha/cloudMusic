@@ -15,9 +15,9 @@ let index = 0
 let buttonpic = []
 
 
-let res = JSON.parse(localStorage.getItem("res"))
+let res = JSON.parse( localStorage.getItem("res"))
 console.log(res);
-let searchvalue = localStorage.getItem("searchvalue")
+let searchvalue =  localStorage.getItem("searchvalue")
 searchname.innerHTML = `搜索：${searchvalue}`
 for (let i = 0; i < res.length; i++) {
     let li = document.createElement("li")
@@ -69,7 +69,7 @@ for (let i = 0; i < res.length; i++) {
 }
 
 
-console.log(localStorage.getItem("token"));
+console.log( localStorage.getItem("token"));
 
 
 document.addEventListener('keydown', function (e) {

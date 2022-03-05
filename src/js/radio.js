@@ -14,8 +14,8 @@ let songname = document.querySelector('.song-name')
 let album = document.querySelector('.album')
 let songer3 = document.querySelector('.songer')
 let circle = document.querySelector('#circle-pic')
-localStorage.getItem("token")
-// let res = JSON.parse(localStorage.getItem("res"))
+ localStorage.getItem("token")
+// let res = JSON.parse( localStorage.getItem("res"))
 // names.push(res[i].name)
 // ids.push(res[i].id)
 // buttonpic.push(res[i].album.artist.img1v1Url)
@@ -232,8 +232,8 @@ document.addEventListener('keydown', function (e) {
             console.log(res);
             return res.result.songs;
         }).then((res) => {
-            localStorage.setItem("res", JSON.stringify(res))
-            localStorage.setItem("searchvalue", searchbox.value)
+             localStorage.setItem("res", JSON.stringify(res))
+             localStorage.setItem("searchvalue", searchbox.value)
             window.location.replace("..\\html\\search.html")
             console.log(res);
         })
@@ -245,13 +245,13 @@ document.addEventListener('keydown', function (e) {
 // }
 let himg = document.querySelector('.himg')
 himg.onclick = x => window.location.replace("..\\html\\cloudmusic.html")
-// let userid = localStorage.getItem("userid")
+// let userid =  localStorage.getItem("userid")
 // fetch(`http://redrock.udday.cn:2022/user/playlist?uid=${userid}`)
 //     .then((res) => {
 //         console.log(userid);
 //         return res.json()
 //     }).then((res) => console.log(res))
-// let listdata = localStorage.getItem("listdata")
+// let listdata =  localStorage.getItem("listdata")
 // let radiosongs = document.querySelector('.radiosongs')
 
 
@@ -468,13 +468,13 @@ fetch(`http://redrock.udday.cn:2022/playlist/detail?id=${lid}`).then((res) => {
     }
 })
 
-songerlist.push(localStorage.getItem("songer"))
-songname.innerHTML = localStorage.getItem("song")
-names.push(localStorage.getItem("song"))
-imgs.push(localStorage.getItem("pic"))
+songerlist.push( localStorage.getItem("songer"))
+songname.innerHTML =  localStorage.getItem("song")
+names.push( localStorage.getItem("song"))
+imgs.push( localStorage.getItem("pic"))
 
 console.log(songerlist);
-//buttoning.src = localStorage.getItem("pic")
+//buttoning.src =  localStorage.getItem("pic")
 console.log(names);
 
 

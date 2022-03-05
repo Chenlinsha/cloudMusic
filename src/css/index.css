@@ -98,8 +98,9 @@
 }
 
 .conmiddle {
-    height: 2000px;
-    overflow: hidden;
+    height: 660px;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .pic {

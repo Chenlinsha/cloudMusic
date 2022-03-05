@@ -23,6 +23,10 @@
     margin-right: 5px;
 }
 
+.head2 {
+    background-color: #fff;
+}
+
 .cat {
     position: absolute;
     top: 80px;
