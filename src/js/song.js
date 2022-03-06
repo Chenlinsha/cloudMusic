@@ -28,7 +28,7 @@ function GetUrlPara() {
     return null;
 }
 let res = GetUrlPara();
-let id = res[0].slice(0, 4)
+let id = res[0]
 let src = res[1]
 console.log(id);
 console.log(src);
@@ -59,8 +59,8 @@ fetch(`http://redrock.udday.cn:2022/artist/top/song?id=${id}`).then((res) => {
         li.appendChild(num)
         let img1 = document.createElement("img")
         let img2 = document.createElement("img")
-        img1.setAttribute('src', 'PNG\\love.PNG')
-        img2.setAttribute('src', 'PNG\\download2.PNG')
+        img1.setAttribute('src', '../images/love.PNG')
+        img2.setAttribute('src', '../images/download2.PNG')
         li.appendChild(img1)
         li.appendChild(img2)
         li.appendChild(name)

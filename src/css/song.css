@@ -6,6 +6,12 @@
 
 .collector {
     width: 100px;
+    left: 25%;
+}
+
+.recommend {
+    width: 100px;
+    left: 35%;
 }
 
 .listname {
