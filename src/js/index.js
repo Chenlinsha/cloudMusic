@@ -329,10 +329,7 @@ getFetch('http://redrock.udday.cn:2022/search/hot/detail')
 
 // let himg = document.querySelector('.himg')
 // himg.onclick = x => window.location.replace("网易云.html")
-conmiddle.onclick = x => {
-  volumecontorl.style.display = "none"
-  console.log(1);
-}
+
 tab1.onclick = x => window.location.replace("../html/songer.html")
 let hipt = document.querySelector('.hipt')
 hipt.onclick = x => {
@@ -348,4 +345,5 @@ tab2.onclick = x => {
 conmiddle.onclick = () => {
   hot.style.display = "none"
   login1.style.display = "none"
+  volumecontorl.style.display = "none"
 }

@@ -3,6 +3,7 @@
 let cat = document.querySelector('.cat')
 let item = document.querySelector('.item')
 let category = []
+
 let ul = document.querySelector('.picf')
 let one = document.querySelector('.one')
 const buttoning = document.querySelector('.buttomimg')
@@ -50,5 +51,6 @@ async function getCatlist() {
     })
 }
 getCatlist()
+
 index.onclick = () => window.location.replace("..\\html\\cloudmusic.html")
 song.onclick = () => window.location.replace("..\\html\\songer.html")

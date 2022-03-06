@@ -2,19 +2,20 @@
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    width: 1200px;
+    width: 100%;
     top: 60px;
 }
 
 .inter {
     position: absolute;
     top: 50px;
-    left: 250px;
+    left: 20%;
+    width: 70%;
 }
 
 .inter li {
     float: left;
-    width: 50px;
+    width: 10%;
     height: 20px;
     text-align: center;
     border-right: 1px solid #ccc;
@@ -30,7 +31,8 @@
 .cat {
     position: absolute;
     top: 80px;
-    left: 250px;
+    left: 20%;
+    width: 70%;
 }
 
 .songer {
@@ -39,10 +41,10 @@
 
 .cat li {
     float: left;
-    width: 50px;
+    width: 10%;
     height: 20px;
     text-align: center;
-    font-size: 10px;
+    font-size: 5%;
     border-right: 1px solid #ccc;
     margin-left: 5px;
     margin-right: 5px;

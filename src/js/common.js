@@ -14,7 +14,7 @@ let volumeMax = document.querySelector(".volume-max")
 let dot = document.querySelector(".volume-control-dot")
 let btnif = true
 const textarea = document.querySelector('textarea')
-let contianer = document.querySelector('.contianer')
+let container = document.querySelector('.container')
 let up = document.querySelector(".down")
 let down1 = document.querySelector(".up")
 let back = document.querySelector('.hal')
@@ -239,6 +239,9 @@ fetch(`http://redrock.udday.cn:2022/user/playlist?uid=${userid}`)
     }).then((res) => console.log(res))
 
 console.log(listdata);
+container.onclick = X => {
+    volumecontorl.style.display = "none"
+}
 volume.onclick = X => {
     volumecontorl.style.display = "block"
 }

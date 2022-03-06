@@ -12,11 +12,11 @@
 .tab {
     position: absolute;
     left: 13%;
-    width: 70%;
+    width: 100%;
 }
 
 .tab ul li {
-    width: 12%;
+    width: 10%;
 }
 
 .cat {

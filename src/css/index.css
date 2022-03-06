@@ -219,7 +219,7 @@ li {
 
 .guide {
     float: left;
-    width: 120px;
+    width: 10%;
     height: 40px;
     font-size: 15px;
     margin: 10px;
@@ -239,7 +239,7 @@ li {
 */
 .guide1 {
     float: left;
-    width: 120px;
+    width: 10%;
     height: 40px;
     font-size: 20px;
     margin: 5px;
@@ -261,6 +261,7 @@ li {
     position: absolute;
     top: 0%;
     left: 15%;
+    width: 100%;
 }
 
 .imgs img {

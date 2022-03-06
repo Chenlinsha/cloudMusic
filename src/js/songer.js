@@ -18,10 +18,31 @@ ints[1] = 7
 ints[2] = 96
 ints[3] = 8
 ints[4] = 16
+catgs.push(catLi)
 catgs[0] = -1
 catgs[1] = 1
 catgs[2] = 2
 catgs[3] = 3
+
+
+console.log(int);
+int.forEach(((ele, i) => {
+    int[i].addEventListener('click', () => {
+        int.forEach(((ele, j) => {
+            int[j].style.color = "black"
+            int[i].style.color = "red"
+        }))
+    })
+}))
+catLi.forEach(((ele, i) => {
+    catLi[i].addEventListener('click', () => {
+        catLi.forEach(((ele, j) => {
+            catLi[j].style.color = "black"
+            catLi[i].style.color = "red"
+        }))
+    })
+}))
+
 async function getUserByAsync() {
     let response = await fetch(`http://redrock.udday.cn:2022/artist/list?type=${cat?cat:-1}&area=${int1?int1:-1}`)
     const movies = await response.json();
@@ -45,7 +66,6 @@ async function getUserByAsync() {
             window.location.replace(`..\\html\\song.html?id=!${movies.artists[i].id}&src=!${movies.artists[i].picUrl}`)
         }
     })
-
     return movies;
 }
 getUserByAsync().then(res => console.log(res));
@@ -53,9 +73,6 @@ getUserByAsync().then(res => console.log(res));
 function myRemove() {
     ul.innerHTML = ''
 }
-// console.log(li);
-// ul.removeChild(li)
-// console.log(interLi);
 interLi.forEach((ele, i) => {
     ele.addEventListener('click', function () {
         myRemove()
@@ -63,29 +80,17 @@ interLi.forEach((ele, i) => {
         getUserByAsync()
     })
 })
-
-// for (let i = 0; i < interLi.length; i++) {
-//     console.log(interLi[i]);
-// }
-
-console.log(catLi);
-// for (let i = 0; i < catLi.length; i++) {
-//     catLi[i].addEventListener('click', function () {
-//         myRemove()
-//         if (int)
-//             int1 = ints[i]
-//         else {
-//             int = -1
-//         }
-//         getUserByAsync()
-//     })
-// }
-
 catLi.forEach((item, i) => {
     item.addEventListener('click', function () {
         myRemove()
-        console.log(catLi[i]);
-        cat ? cat = catLi[i] : cat = -1;
+        // cat ? cat = catgs[i] : cat = -1;
+        console.log(cat);
+        if (cat) {
+            cat = catgs[i]
+        } else {
+            cat = -1
+        }
+        console.log(cat);
         getUserByAsync()
     })
 })

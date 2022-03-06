@@ -323,7 +323,7 @@ fetch(`http://redrock.udday.cn:2022/playlist/detail?id=${lid}`).then((res) => {
 
         function createLi() { //根据歌词数组创建li
             let len = lrcArr.length;
-            for (let i = 0; i < len; i++) {
+            for (let i = 1; i < len; i++) {
                 let lrc_li = lrcArr[i];
                 let li = document.createElement('li');
                 li.innerText = lrc_li.lrc;
@@ -331,7 +331,6 @@ fetch(`http://redrock.udday.cn:2022/playlist/detail?id=${lid}`).then((res) => {
                 li.style.textAlign = 'center'
                 li.style.width = '100%'
                 li.style.padding = '0';
-                li.style.color = '#999'
                 li.style.transition = '0.3'
                 dia.appendChild(li);
             }
